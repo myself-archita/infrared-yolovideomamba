@@ -1,14 +1,21 @@
 # Temporal Aware Small Object Detection in Infrared Videos Using YOLO26 and VideoMamba
 
-Final internship submission for infrared video object detection, tracking, and temporal refinement.
+Final internship submission for infrared video object detection, tracking, and temporal refinement on the Anti-UAV RGBT dataset.
 
-The pipeline combines:
+The workflow combines:
 
-- Frame extraction from infrared videos
-- Preprocessing with CLAHE and denoising
-- Feature extraction using a YOLO detector
-- ROI-aware temporal refinement with VideoMamba
-- Final detection and visualization for infrared surveillance-style footage
+- Anti-UAV RGBT infrared MP4 videos
+- Frame extraction with OpenCV
+- Image preprocessing with CLAHE, bilateral filtering, and normalization
+- YOLO dataset annotation in bounding-box format
+- YOLO26n training with STA, SSQ loss, and multi-scale features
+- Trained YOLO26 model export as `best.pt`
+- Feature map extraction from intermediate YOLO layers
+- VideoMamba integration for temporal feature learning with SSM
+- Spatial-temporal feature fusion
+- ROI visualization and feature map analysis
+- Full performance evaluation across precision, recall, F1, IoU, AP, mAP, confusion matrix, PR/precision/recall/F1 curves, and loss curves
+- Final infrared object detection output
 
 ![Project pipeline](assets/workflow1.png)
 
@@ -17,7 +24,7 @@ The pipeline combines:
 - Built for infrared targets with low contrast and noisy backgrounds
 - Uses a custom-trained YOLO checkpoint (`best.pt`)
 - Produces YOLO-format labels from infrared annotations
-- Supports dataset sampling, preprocessing, and training in one workflow
+- Supports dataset preprocessing, YOLO training, feature extraction, and temporal modeling in one workflow
 - Designed to be easy to extend for future experiments with tracking and temporal modeling
 - Includes the final submitted research report in `docs/final_report.pdf`
 
@@ -39,19 +46,37 @@ infrared_yolovideomamba_repo/
 ## Pipeline
 
 ```text
-Infrared Video
+Anti-UAV RGBT Dataset (Infrared MP4 Videos)
     ↓
-Frame Extraction
+Infrared Video Acquisition
     ↓
-YOLO26
+Frame Extraction (OpenCV)
     ↓
-Feature Maps
+Image Preprocessing
+  (CLAHE + Bilateral Filtering + Image Normalization)
     ↓
-VideoMamba
+YOLO Dataset Annotation
+  (Bounding Box Labels)
     ↓
-Temporal Features
+YOLO26n Model Training
+  (STA + SSQ Loss + Multi-scale Features)
     ↓
-Final Detection
+Trained YOLO26 Model
+  (best.pt)
+    ↓
+Feature Map Extraction
+  (Intermediate YOLO Features)
+    ↓
+VideoMamba Integration
+  (Temporal Feature Learning using SSM)
+    ↓
+Spatial-Temporal Feature Fusion
+    ↓
+ROI Visualization & Feature Map Analysis
+    ↓
+Model Performance Evaluation
+    ↓
+Final Infrared Object Detection
 ```
 
 ## What the pipeline does
@@ -59,12 +84,14 @@ Final Detection
 1. Extracts frames from infrared videos
 2. Applies infrared-friendly preprocessing:
    - CLAHE
-   - Denoising
+   - Bilateral filtering
    - Normalization / resizing
 3. Converts annotations into YOLO label format
 4. Builds a YOLO-ready dataset structure
-5. Trains or fine-tunes a YOLO detector
-6. Provides a clean integration hook for VideoMamba
+5. Trains or fine-tunes a YOLO26n detector
+6. Extracts intermediate feature maps for analysis
+7. Passes features into VideoMamba for temporal learning
+8. Produces ROI visualizations and evaluation metrics
 
 ## Setup
 
@@ -107,6 +134,7 @@ python src/pipeline.py --source-root "C:\path\to\extracted_dataset" --skip-train
 - Custom YOLO checkpoint: `best.pt`
 - Research report: [`docs/final_report.pdf`](docs/final_report.pdf)
 - Pipeline figure: `assets/workflow1.png`
+- Evaluation outputs: precision, recall, F1, IoU, AP, mAP, confusion matrix, PR curve, precision curve, recall curve, F1 curve, and loss curves
 
 For GitHub hygiene, the large dataset and trained weights are intentionally ignored by default. If you want, you can upload:
 
@@ -125,4 +153,3 @@ For GitHub hygiene, the large dataset and trained weights are intentionally igno
 ## Acknowledgment
 
 This repository reflects the final internship submission by Archita Guha Roy on temporal-aware infrared object detection using YOLO26 and VideoMamba.
-
