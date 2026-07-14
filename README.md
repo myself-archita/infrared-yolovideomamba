@@ -1,47 +1,6 @@
 # Temporal Aware Small Object Detection in Infrared Videos Using YOLO26 and VideoMamba
 
-Final internship submission for infrared video object detection, tracking, and temporal refinement on the Anti-UAV RGBT dataset.
-
-The workflow combines:
-
-- Anti-UAV RGBT infrared MP4 videos
-- Frame extraction with OpenCV
-- Image preprocessing with CLAHE, bilateral filtering, and normalization
-- YOLO dataset annotation in bounding-box format
-- YOLO26n training with STA, SSQ loss, and multi-scale features
-- Trained YOLO26 model export as `best.pt`
-- Feature map extraction from intermediate YOLO layers
-- VideoMamba integration for temporal feature learning with SSM
-- Spatial-temporal feature fusion
-- ROI visualization and feature map analysis
-- Full performance evaluation across precision, recall, F1, IoU, AP, mAP, confusion matrix, PR/precision/recall/F1 curves, and loss curves
-- Final infrared object detection output
-
-![Project pipeline](assets/workflow1.png)
-
-## Project Highlights
-
-- Built for infrared targets with low contrast and noisy backgrounds
-- Uses a custom-trained YOLO checkpoint (`best.pt`)
-- Produces YOLO-format labels from infrared annotations
-- Supports dataset preprocessing, YOLO training, feature extraction, and temporal modeling in one workflow
-- Designed to be easy to extend for future experiments with tracking and temporal modeling
-- Includes the final submitted research report in `docs/final_report.pdf`
-
-## Repository Structure
-
-```text
-infrared_yolovideomamba_repo/
-├── assets/
-│   └── workflow1.png
-├── docs/
-│   └── final_report.pdf
-├── src/
-│   ├── pipeline.py
-│   └── videomamba_integration.py
-├── requirements.txt
-└── README.md
-```
+Final internship submission for object detection, tracking, and temporal refinement in infrared videos.
 
 ## Pipeline
 
@@ -77,6 +36,32 @@ ROI Visualization & Feature Map Analysis
 Model Performance Evaluation
     ↓
 Final Infrared Object Detection
+```
+
+![Project pipeline](assets/workflow1.png)
+
+## Project Highlights
+
+- Built for infrared targets with low contrast and noisy backgrounds
+- Uses a custom-trained YOLO checkpoint (`best.pt`)
+- Produces YOLO-format labels from infrared annotations
+- Supports dataset preprocessing, YOLO training, feature extraction, and temporal modeling in one workflow
+- Designed to be easy to extend for future experiments with tracking and temporal modeling
+- Includes the final submitted research report in `docs/final_report.pdf`
+
+## Repository Structure
+
+```text
+infrared_yolovideomamba_repo/
+├── assets/
+│   └── workflow1.png
+├── docs/
+│   └── final_report.pdf
+├── src/
+│   ├── pipeline.py
+│   └── videomamba_integration.py
+├── requirements.txt
+└── README.md
 ```
 
 ## What the pipeline does
