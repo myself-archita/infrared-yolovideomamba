@@ -121,12 +121,6 @@ python src/pipeline.py --source-root "C:\path\to\extracted_dataset" --skip-train
 - Pipeline figure: `assets/workflow1.png`
 - Evaluation outputs: precision, recall, F1, IoU, AP, mAP, confusion matrix, PR curve, precision curve, recall curve, F1 curve, and loss curves
 
-For GitHub hygiene, the large dataset and trained weights are intentionally ignored by default. If you want, you can upload:
-
-- a small sample clip
-- a tiny demonstration subset
-- or an inference-only demo notebook
-
 ## Why this looks strong for recruitment
 
 - Clear problem statement
