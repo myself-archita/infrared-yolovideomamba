@@ -1,24 +1,25 @@
-# Infrared Object Detection and Tracking with YOLO + VideoMamba
+# Temporal Aware Small Object Detection in Infrared Videos Using YOLO26 and VideoMamba
 
-An end-to-end summer internship project for **infrared video object detection and temporal tracking**.
+Final internship submission for infrared video object detection, tracking, and temporal refinement.
 
 The pipeline combines:
 
-- **Frame extraction** from infrared videos
-- **Preprocessing** with CLAHE and denoising
-- **Feature extraction** using a YOLO detector
-- **ROI-aware temporal refinement** with VideoMamba
-- **Final detection and visualization** for infrared surveillance-style footage
+- Frame extraction from infrared videos
+- Preprocessing with CLAHE and denoising
+- Feature extraction using a YOLO detector
+- ROI-aware temporal refinement with VideoMamba
+- Final detection and visualization for infrared surveillance-style footage
 
 ![Project pipeline](assets/workflow1.png)
 
-## Highlights
+## Project Highlights
 
 - Built for infrared targets with low contrast and noisy backgrounds
 - Uses a custom-trained YOLO checkpoint (`best.pt`)
 - Produces YOLO-format labels from infrared annotations
 - Supports dataset sampling, preprocessing, and training in one workflow
 - Designed to be easy to extend for future experiments with tracking and temporal modeling
+- Includes the final submitted research report in `docs/final_report.pdf`
 
 ## Repository Structure
 
@@ -26,6 +27,8 @@ The pipeline combines:
 infrared_yolovideomamba_repo/
 ├── assets/
 │   └── workflow1.png
+├── docs/
+│   └── final_report.pdf
 ├── src/
 │   ├── pipeline.py
 │   └── videomamba_integration.py
@@ -66,7 +69,7 @@ Final Detection
 ## Setup
 
 ```powershell
-git clone https://github.com/<your-username>/infrared-yolovideomamba.git
+git clone https://github.com/myself-archita/infrared-yolovideomamba.git
 cd infrared-yolovideomamba
 python -m venv .venv
 .venv\Scripts\activate
@@ -101,9 +104,9 @@ python src/pipeline.py --source-root "C:\path\to\extracted_dataset" --skip-train
 
 ## Model and Results
 
-- **Custom YOLO checkpoint:** `best.pt`
-- **Research report:** included separately in the internship submission
-- **Pipeline figure:** `assets/workflow1.png`
+- Custom YOLO checkpoint: `best.pt`
+- Research report: [`docs/final_report.pdf`](docs/final_report.pdf)
+- Pipeline figure: `assets/workflow1.png`
 
 For GitHub hygiene, the large dataset and trained weights are intentionally ignored by default. If you want, you can upload:
 
@@ -121,5 +124,5 @@ For GitHub hygiene, the large dataset and trained weights are intentionally igno
 
 ## Acknowledgment
 
-This repository is based on internship work and the provided research pipeline, with YOLO used for detection and VideoMamba used for temporal refinement.
+This repository reflects the final internship submission by Archita Guha Roy on temporal-aware infrared object detection using YOLO26 and VideoMamba.
 
